@@ -49,10 +49,20 @@ def main(args):
     limits = to_limits(args.older, args.newer)
     dir_generators = [iterate_files(each) for each in args.dir]
     paths = itertools.chain(*dir_generators)
-    today = datetime.date.today()
+    if args.today is None:
+        today = datetime.date.today()
+    else:
+        today = args.today
     within_range = (each for each in paths if within(each, limits, today))
     for each in within_range:
         print(each)
+
+
+def to_date(s):
+    try:
+        return datetime.datetime.strptime(s, "%Y-%m-%d").date()
+    except ValueError:
+        raise argparse.ArgumentTypeError("Invalid date: " + s)
 
 
 def cli_parse():
@@ -60,6 +70,11 @@ def cli_parse():
     parser.add_argument("dir", nargs="+", help="directory to search")
     parser.add_argument("-n", "--newer", type=int, help="at most n days old")
     parser.add_argument("-o", "--older", type=int, help="at least n days old")
+    parser.add_argument(
+        "-t",
+        "--today",
+        type=to_date,
+        help="date to use (e.g. 2001-12-01)")
     args = parser.parse_args()
     return args
 
