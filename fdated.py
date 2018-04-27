@@ -3,9 +3,8 @@
 import argparse
 import datetime
 import itertools
-import re
 import os
-
+import re
 
 RE_OBJ = re.compile(r"(\d\d\d\d-\d\d-\d\d)")
 
