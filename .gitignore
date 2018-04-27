@@ -102,3 +102,5 @@ ENV/
 
 # Vim swap files
 *.swp
+# Ctags file
+tags

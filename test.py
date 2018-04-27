@@ -30,6 +30,7 @@ class ToLimitsTest(unittest.TestCase):
         }
         self.assertEqual(expected, fdated.to_limits(9, 3))
 
+
 class WithinWithNoDateInFilenameTest(unittest.TestCase):
     def testWithoutDates(self):
         self.assertEqual(False, fdated.within("a.log", {}, None))
