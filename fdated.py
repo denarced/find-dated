@@ -57,11 +57,11 @@ def main(args):
         print(each)
 
 
-def to_date(s):
+def to_date(date_str):
     try:
-        return datetime.datetime.strptime(s, "%Y-%m-%d").date()
+        return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     except ValueError:
-        raise argparse.ArgumentTypeError("Invalid date: " + s)
+        raise argparse.ArgumentTypeError("Invalid date: " + date_str)
 
 
 def cli_parse():
