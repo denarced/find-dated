@@ -1,0 +1,11 @@
+= find-dated
+
+Find files based on the date in filename
+
+== Usage
+
+To see how to use:
+
+```
+./fdated.py -h
+```
