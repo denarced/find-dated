@@ -9,3 +9,47 @@ To see how to use:
 ```
 ./fdated.py -h
 ```
+
+An example:
+```sh
+# note the file that doesn't have a date in it
+$ ls logs
+main-2018-04-20.log
+main-2018-04-21.log
+main-2018-04-22.log
+main-2018-04-23.log
+main-2018-04-24.log
+main-2018-04-25.log
+main-2018-04-26.log
+main-2018-04-27.log
+main-2018-04-28.log
+main-2018-04-29.log
+main-2018-04-30.log
+notfound.log
+# Define today as April 30 and find all files with a date in the filename in
+# directory logs. Note that the file notfound.log isn't listed.
+$ ./fdated.py -t 2018-04-30 logs/
+logs/main-2018-04-30.log
+logs/main-2018-04-28.log
+logs/main-2018-04-29.log
+logs/main-2018-04-21.log
+logs/main-2018-04-27.log
+logs/main-2018-04-23.log
+logs/main-2018-04-22.log
+logs/main-2018-04-20.log
+logs/main-2018-04-25.log
+logs/main-2018-04-24.log
+logs/main-2018-04-26.log
+# Find all files that are newer than 2 days. Since today is defined as April 30,
+# find all files newer than 2018-04-28.
+$ ./fdated.py -t 2018-04-30 -n 2 logs/
+logs/main-2018-04-30.log
+logs/main-2018-04-29.log
+# Find all files older than 9 days: all before 2018-04-21.
+$ ./fdated.py -t 2018-04-30 -o 9 logs/
+logs/main-2018-04-20.log
+# Find all files older than 4 days and newer than 6. I.e. those that are exactly
+# 5 days old: 2018-04-25.
+$ ./fdated.py -t 2018-04-30 -o 4 -n 6 logs/
+logs/main-2018-04-25.log
+```
