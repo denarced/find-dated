@@ -1,6 +1,6 @@
 = find-dated
 
-Find files based on the date in filename
+Find files based on the date in filename. The motivation behind this little script was that using `find . -mtime +14` to find more than 14 days old log files relies on the files' timestamps and it's not usually what I want. I'd rather rely on the date in the filename. With that in mind this script was created to resemble `find`: define how old or new a file needs to be and which directories to search.
 
 == Usage
 
