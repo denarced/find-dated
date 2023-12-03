@@ -28,7 +28,7 @@ do
     do
         monthDir="${yearDir}/${month}"
         mkdir $monthDir
-        touch "${monthDir}/main_${year}-${month}-{01..28}.log"
+        touch "${monthDir}/main_${year}-${month}-"{01..28}".log"
     done
 done
 echo "Find 4 files among $(ls $dirpath | wc -l) directories"
